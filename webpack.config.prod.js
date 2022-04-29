@@ -20,6 +20,7 @@ module.exports = {
   ],
   module: {
     rules: [
+      ...base.module.rules,
       {
         test: /\.css$/i,        //正则表达$表示以css结尾，\.表示转义
         use: [
