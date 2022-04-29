@@ -1,15 +1,21 @@
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const base =require('./webpack.config.base.js')
+
 
 module.exports = {
-  mode: "development", //development或production 开发或用户观看
-  entry:'./src/index.js',  //入口
-  output: {     //出口
-    filename: "[name].[contenthash].js", 
-  }
+  ...base,
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,        //正则表达$表示以css结尾，\.表示转义
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
-
-
-
-
- 
-  
